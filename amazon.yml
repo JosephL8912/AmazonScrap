@@ -1,0 +1,20 @@
+productName:
+    css: 'span.a-size-large.product-title-word-break[id="productTitle"]'
+    xpath: null
+    type: Text
+price:
+    css: 'div.centerColAlign span.a-price > span:nth-of-type(2)'
+    xpath: null
+    type: Text
+description:
+    css: 'div.centerColAlign div.a-section.a-spacing-medium'
+    xpath: null
+    type: Text
+rating:
+    css: 'div.centerColAlign span.reviewCountTextLinkedHistogram span.a-size-base'
+    xpath: null
+    type: Text
+numberOfRatings:
+    css: 'div.centerColAlign a.a-link-normal span.a-size-base'
+    xpath: null
+    type: Text
