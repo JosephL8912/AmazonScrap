@@ -1,11 +1,28 @@
 from selectorlib import Extractor
 import json 
 import requests 
-
+import sys
 
 
 # Create an Extractor by reading from the YAML file
 e = Extractor.from_yaml_file('amazon.yml')
+
+try: #catching arguements from the console
+    argTrue = False
+    
+    printM = str(sys.argv[1])
+    urlL = str(sys.argv[2])
+    if (printM != "-p" and printM != "-w"): #raise exception if outside of param
+        raise Exception
+    
+    argTrue = True
+    
+except:
+    print("Looks like your arguements were bad. ")
+    end = int(input("1.Yes\n2.No\nWould you like to continue without commandline arguements? "))
+    if (end == 2):
+        print("Try again")
+        sys.exit()
 
 def scraper(url):  
 
@@ -35,10 +52,21 @@ def scraper(url):
     # Pass the HTML of the page and create 
     return e.extract(r.text)
 
-with open("urls.txt",'r') as urllist, open('output.jsonl','w') as outfile:
-    for url in urllist.read().splitlines():
-        data = scraper(url) 
+if (not argTrue):
+    with open("urls.txt",'r') as urllist, open('output.jsonl','w') as outfile:
+        for url in urllist.read().splitlines():
+            data = scraper(url) 
+            if data:
+                json.dump(data,outfile)
+                print(data)
+                outfile.write("\n\n")
+else: 
+    data = scraper(urlL)
+    with open('output.jsonl','w') as outfile:
         if data:
             json.dump(data,outfile)
-            outfile.write("\n")
-    
+            if (printM == "-p"):
+                print(data)
+            elif (printM == "-w"):
+                outfile.write("\n\n")
+            
