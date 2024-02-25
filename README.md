@@ -6,6 +6,9 @@
 
         -w = write to json file
 
+### Url
+        Input any amazon product url
+
 ## Formating
 `python3 amazon.py {print} {url}`
 `python3 amazon.py -p https://www.amazon.com/VALORANT-25-Gift-Card-Online/dp/B088GH4X9W?th=1`
