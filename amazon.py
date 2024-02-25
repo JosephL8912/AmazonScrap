@@ -26,7 +26,7 @@ except:
 
 def scraper(url):  
 
-    headers = {
+    headers = { #adding headers so websites allow me in
         'dnt': '1',
         'upgrade-insecure-requests': '1',
         'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36',
@@ -52,17 +52,16 @@ def scraper(url):
     # Pass the HTML of the page and create 
     return e.extract(r.text)
 
-if (not argTrue):
-    with open("urls.txt",'r') as urllist, open('output.jsonl','w') as outfile:
+if (not argTrue): #if not using command line args
+    with open("urls.txt",'r') as urllist, open('output.jsonl','w') as outfile: #reads url from url file and seting up write file
         for url in urllist.read().splitlines():
             data = scraper(url) 
             if data:
                 json.dump(data,outfile)
-                print(data)
                 outfile.write("\n\n")
 else: 
     data = scraper(urlL)
-    with open('output.jsonl','w') as outfile:
+    with open('output.jsonl','w') as outfile: #setting up write file
         if data:
             json.dump(data,outfile)
             if (printM == "-p"):
