@@ -18,4 +18,4 @@
 `requests`
 `sys`
 ## Discalimer
-        I used Anaconda Spyder to run this program. Between IDEs I'm unsure if bcrypt works as intended.
+        I used Anaconda Spyder to run this program. 
